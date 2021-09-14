@@ -20,9 +20,9 @@ class MyApp extends StatelessWidget {
         // or simply save your changes to "hot reload" in a Flutter IDE).
         // Notice that the counter didn't reset back to zero; the application
         // is not restarted.
-        primarySwatch: Colors.red,
+        primarySwatch: Colors.blueGrey,
       ),
-      home: MyHomePage(title: 'Need For Feed'),
+      home: MyHomePage(title: ' '),
     );
   }
 }
@@ -73,10 +73,12 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+      backgroundColor: Colors.teal[100],
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
         child: Column(
+
           // Column is also a layout widget. It takes a list of children and
           // arranges them vertically. By default, it sizes itself to fit its
           // children horizontally, and tries to be as tall as its parent.
@@ -94,20 +96,53 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Text(
-              'You have pushed the button this many times:',
+              'Drink Bank',
+              style: TextStyle(fontWeight: FontWeight.bold,
+                  fontFamily: 'Hind',
+                  color: Colors.blue,
+                  height: 1,
+                  fontSize: 70,
+                  ),
+
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Image(
+              image: NetworkImage('https://www.freeiconspng.com/thumbs/water-png/water-png-water-drops-png-image-6.png'),
+              height: 350,
+              width: 250
             ),
+            ElevatedButton(
+                onPressed: (){
+                // todo code
+                },
+                style: TextButton.styleFrom(
+                  backgroundColor: Colors.green
+                ),
+                child: Text(
+                  'Add Drink +',
+                  style: 
+                    TextStyle(
+                      color: Colors.white
+                    ),
+                )
+            ),
+            ElevatedButton(
+                onPressed: (){
+                  // todo code
+                },
+                style: TextButton.styleFrom(
+                    backgroundColor: Colors.blueAccent
+                ),
+                child: Text(
+                  'View Vault',
+                  style:
+                  TextStyle(
+                      color: Colors.white
+                  ),
+                )
+            )
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }

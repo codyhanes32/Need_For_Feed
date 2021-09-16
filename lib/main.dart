@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:need_for_feed/NewDrink.dart';
 
 void main() {
   runApp(MyApp());
@@ -68,12 +69,12 @@ class _MyHomePageState extends State<MyHomePage> {
     // fast, so that you can just rebuild anything that needs updating rather
     // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
+      //appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
-      backgroundColor: Colors.teal[100],
+       // title: Text(widget.title),
+      //),
+      backgroundColor: Colors.teal,
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -99,47 +100,70 @@ class _MyHomePageState extends State<MyHomePage> {
               'Drink Bank',
               style: TextStyle(fontWeight: FontWeight.bold,
                   fontFamily: 'Hind',
-                  color: Colors.blue,
+                  color: Colors.greenAccent,
                   height: 1,
                   fontSize: 70,
+                  fontStyle: FontStyle.italic,
                   ),
 
             ),
-            Image(
-              image: NetworkImage('https://www.freeiconspng.com/thumbs/water-png/water-png-water-drops-png-image-6.png'),
-              height: 350,
-              width: 250
+            Container(
+              margin: EdgeInsets.all(30),
+              child:Image(
+                  image: NetworkImage('https://www.pngkey.com/png/full/982-9824565_american-pale-ale-transparent-background-beer-glass-png.png'),
+                  height: 350,
+                  width: 250
+              ),
             ),
-            ElevatedButton(
-                onPressed: (){
-                // todo code
-                },
-                style: TextButton.styleFrom(
-                  backgroundColor: Colors.green
-                ),
-                child: Text(
-                  'Add Drink +',
-                  style: 
-                    TextStyle(
-                      color: Colors.white
-                    ),
-                )
-            ),
-            ElevatedButton(
-                onPressed: (){
-                  // todo code
-                },
-                style: TextButton.styleFrom(
-                    backgroundColor: Colors.blueAccent
-                ),
-                child: Text(
-                  'View Vault',
-                  style:
-                  TextStyle(
-                      color: Colors.white
+
+            Container(
+              margin: EdgeInsets.all(10),
+              width:150,
+              height: 40,
+              child:ElevatedButton(
+                  onPressed: (){
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NewDrink()),
+                    );
+                  },
+                  style: TextButton.styleFrom(
+                    backgroundColor: Colors.green,
+
                   ),
-                )
-            )
+                  child: Text(
+                    'Add Drink +',
+                    style:
+                    TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                    ),
+                  )
+              ),
+            ),
+
+            Container(
+                margin: EdgeInsets.all(10),
+                width:150,
+                height: 40,
+              child:ElevatedButton(
+                  onPressed: (){
+                    //todo
+                  },
+                  style: TextButton.styleFrom(
+                      backgroundColor: Colors.blueAccent
+                  ),
+                  child: Text(
+                    'View Vault',
+                    style:
+                    TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                    ),
+                  )
+              )
+            ),
+
           ],
         ),
       ),

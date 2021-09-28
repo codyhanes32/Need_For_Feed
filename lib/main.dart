@@ -74,7 +74,7 @@ class _MyHomePageState extends State<MyHomePage> {
         // the App.build method, and use it to set our appbar title.
        // title: Text(widget.title),
       //),
-      backgroundColor: Colors.teal,
+      backgroundColor: Colors.lightBlue[100],
       body: Center(
         // Center is a layout widget. It takes a single child and positions it
         // in the middle of the parent.
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
               'Drink Bank',
               style: TextStyle(fontWeight: FontWeight.bold,
                   fontFamily: 'Hind',
-                  color: Colors.greenAccent,
+                  color: Colors.blue,
                   height: 1,
                   fontSize: 70,
                   fontStyle: FontStyle.italic,

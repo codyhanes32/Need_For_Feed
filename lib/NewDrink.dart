@@ -1,4 +1,7 @@
+import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:need_for_feed/insertSuccess.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class NewDrink extends StatefulWidget {
   const NewDrink({Key? key}) : super(key: key);
@@ -7,37 +10,31 @@ class NewDrink extends StatefulWidget {
   _NewDrinkState createState() => _NewDrinkState();
 }
 class _NewDrinkState extends State<NewDrink> {
-  double rating = 3;
+  double beerRating = 3;
   List<String> options = <String>['Ale', 'Lager', 'Porter', 'Stout', 'Blonde Ale', 'Brown Ale',
     'Pale Ale', 'Indian Pale Ale (IPA)', 'Wheat', 'Pilsner', 'Sour'];
   String dropdownValue = 'Ale';
+  var beerName = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.greenAccent,
+      backgroundColor: Colors.lightBlue[100],
+      resizeToAvoidBottomInset : false,
       appBar: AppBar(
 
         title: Text('Beer Vault'),
 
       ),
-      body: Center(
+      body: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
             Container(
-              child: Text('New Beer',
-              style: TextStyle(
-                fontFamily: 'Hind',
-                color: Colors.blueAccent,
-                fontSize: 70,
-              )),
-            ),
-
-            Container(
-              margin: EdgeInsets.all(30),
+              margin: EdgeInsets.symmetric(vertical: 70, horizontal: 20),
               child: TextField(
+                controller: beerName,
                 decoration: const InputDecoration(
                     fillColor: Colors.white, filled: true,
                     border: OutlineInputBorder(),
@@ -48,7 +45,7 @@ class _NewDrinkState extends State<NewDrink> {
 
             Container(
               margin: new EdgeInsets.symmetric(horizontal: 20.0),
-              child: Row(
+              child: Column(
                 children: [
                   Text('Select Beer Type',
                   style: TextStyle(
@@ -58,10 +55,11 @@ class _NewDrinkState extends State<NewDrink> {
                     fontSize: 12,
                     fontStyle: FontStyle.italic,
                   )),
+
                   Container(
-                      margin: new EdgeInsets.symmetric(horizontal: 30.0, vertical: 50),
+                      margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
                       height: 30,
-                      width: 180,
+                      width: 70,
                       child: DropdownButton<String>(
                       value: dropdownValue,
                       onChanged: (String? newValue) {
@@ -90,27 +88,40 @@ class _NewDrinkState extends State<NewDrink> {
               ),
             ),
 
-              Container(
-                margin: new EdgeInsets.symmetric(horizontal: 5, vertical: 10.0),
-                child:Row(
-                  children:[
-                    Text('Terrible'),
-                    Container(
-                      width: 275,
-                      child:Slider(value: rating,
-                        onChanged: (newRating){
-                          setState(() => rating = newRating);
-                        },
-                        min: 1,
-                        max: 5,
-                        divisions: 8,
-                        label: "$rating",
-                      ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 50),
+              child: Column(
+                children: [
+                  Text('Rating',
+                      style: TextStyle(
+                        fontFamily: 'Hind',
+                        color: Colors.black,
+                        height: 1,
+                        fontSize: 12,
+                        fontStyle: FontStyle.italic,
+                      )),
+                Container(
+                  margin: EdgeInsets.symmetric(vertical: 10),
+                  color: Colors.blueAccent,
+                  child: RatingBar.builder(
+                    initialRating: 3,
+                    minRating: 1,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemCount: 5,
+                    itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
+                    itemBuilder: (context, _) => Icon(
+                      Icons.star,
+                      color: Colors.amber,
                     ),
-                    Text('Delicious'),
-                  ],
+                    onRatingUpdate: (rating) {
+                      beerRating = rating;
+                    },
+                  ),
                 ),
+                ],
               ),
+            ),
 
             Container(
                 margin: new EdgeInsets.symmetric(vertical: 60.0),
@@ -118,7 +129,23 @@ class _NewDrinkState extends State<NewDrink> {
                 height: 40,
                 child:ElevatedButton(
                     onPressed: (){
-                      //todo
+                      var timestamp = new DateTime.now().millisecondsSinceEpoch;
+                      FirebaseDatabase.instance.reference().child("beer/beer" + timestamp.toString()).set(
+                        {
+                          "name" : beerName.text,
+                          "rating" : beerRating,
+                          "type" : dropdownValue
+                        }
+                      ).then((value) {
+                        print("Beer successfully added");
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => insertSuccess()),
+                        );
+                      }).catchError((error){
+                        print("Failed to add." + error.toString());
+                      });
+
                     },
                     style: TextButton.styleFrom(
                         backgroundColor: Colors.blueAccent

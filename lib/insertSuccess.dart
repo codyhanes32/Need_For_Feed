@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:need_for_feed/main.dart';
 
 class insertSuccess extends StatefulWidget {
   const insertSuccess({Key? key}) : super(key: key);
@@ -12,7 +13,8 @@ class _insertSuccessState extends State<insertSuccess> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.lightBlue[100],
+       // backgroundColor: Colors.lightBlue[100]
+
         appBar: AppBar(
 
           title: Text(''),
@@ -26,6 +28,52 @@ class _insertSuccessState extends State<insertSuccess> {
               child: Text('Beer Successfully Inserted',
               style: TextStyle(color: Colors.green,
               fontSize: 30),),
+            ),
+
+            Container(
+                margin: EdgeInsets.all(10),
+                width:150,
+                height: 40,
+                child:ElevatedButton(
+                    onPressed: (){
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => MyApp()),
+                      );
+                    },
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.blueAccent
+                    ),
+                    child: Text(
+                      'Home',
+                      style:
+                      TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    )
+                )
+            ),
+            Container(
+                margin: EdgeInsets.all(10),
+                width:150,
+                height: 40,
+                child:ElevatedButton(
+                    onPressed: (){
+                      //todo
+                    },
+                    style: TextButton.styleFrom(
+                        backgroundColor: Colors.redAccent[50]
+                    ),
+                    child: Text(
+                      'View Vault',
+                      style:
+                      TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                      ),
+                    )
+                )
             ),
           ],
         )

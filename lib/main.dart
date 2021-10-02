@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:need_for_feed/NewDrink.dart';
+import 'package:need_for_feed/beerVault.dart';
 
 void main() {
   runApp(MyApp());
@@ -135,8 +136,8 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Add Drink +',
                     style:
                     TextStyle(
-                        color: Colors.white,
-                        fontSize: 20,
+                      color: Colors.white,
+                      fontSize: 20,
                     ),
                   )
               ),
@@ -148,7 +149,10 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 40,
               child:ElevatedButton(
                   onPressed: (){
-                    //todo
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => beerVault()),
+                    );
                   },
                   style: TextButton.styleFrom(
                       backgroundColor: Colors.blueAccent

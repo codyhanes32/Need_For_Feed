@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "160022137251",
+    "project_id": "flutter-drinkbank",
+    "storage_bucket": "flutter-drinkbank.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:160022137251:android:e4d1152ca62c15fe31b216",
+        "android_client_info": {
+          "package_name": "com.needforfeed.need_for_feed"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "160022137251-bbnc506ika2sh75akuf3f63v7ibdln8r.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAcMQ3FP_T9QspLchr-xnH2VAoKDrQEA3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "160022137251-bbnc506ika2sh75akuf3f63v7ibdln8r.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

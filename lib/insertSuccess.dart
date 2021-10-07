@@ -13,7 +13,7 @@ class _insertSuccessState extends State<insertSuccess> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-       // backgroundColor: Colors.lightBlue[100]
+        backgroundColor: Colors.cyanAccent[100],
 
         appBar: AppBar(
 
@@ -26,7 +26,7 @@ class _insertSuccessState extends State<insertSuccess> {
             Container(
               margin: EdgeInsets.symmetric(vertical: 150),
               child: Text('Beer Successfully Inserted',
-              style: TextStyle(color: Colors.green,
+              style: TextStyle(color: Colors.blue,
               fontSize: 30),),
             ),
 

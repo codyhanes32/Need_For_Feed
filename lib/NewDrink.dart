@@ -15,15 +15,17 @@ class _NewDrinkState extends State<NewDrink> {
     'Pale Ale', 'Indian Pale Ale (IPA)', 'Wheat', 'Pilsner', 'Sour'];
   String dropdownValue = 'Ale';
   var beerName = TextEditingController();
+  var notes = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.lightBlue[100],
+      backgroundColor: Colors.cyanAccent[100],
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
 
-        title: Text('Beer Vault'),
+        title: Text(''),
+        backgroundColor: Colors.blue,
 
       ),
       body: SingleChildScrollView(
@@ -32,34 +34,29 @@ class _NewDrinkState extends State<NewDrink> {
           children: [
 
             Container(
-              margin: EdgeInsets.symmetric(vertical: 70, horizontal: 20),
+              margin: EdgeInsets.only(left: 10, right: 10, top: 50, bottom: 30),
               child: TextField(
                 controller: beerName,
-                decoration: const InputDecoration(
-                    fillColor: Colors.white, filled: true,
-                    border: OutlineInputBorder(),
+                decoration: InputDecoration(
+
+                    fillColor: Colors.cyanAccent, filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20),
+                    ),
                     hintText: 'Beer Name'
                 ),
               ),
             ),
 
             Container(
-              margin: new EdgeInsets.symmetric(horizontal: 20.0),
+              height: 100,
+              margin: new EdgeInsets.only(left:10),
               child: Column(
                 children: [
-                  Text('Select Beer Type',
-                  style: TextStyle(
-                    fontFamily: 'Hind',
-                    color: Colors.black,
-                    height: 1,
-                    fontSize: 12,
-                    fontStyle: FontStyle.italic,
-                  )),
-
                   Container(
-                      margin: new EdgeInsets.symmetric(horizontal: 10.0, vertical: 20),
-                      height: 30,
-                      width: 70,
+                      margin: new EdgeInsets.only(left: 10, top: 20),
+                      height: 40,
+                      width: 100,
                       child: DropdownButton<String>(
                       value: dropdownValue,
                       onChanged: (String? newValue) {
@@ -72,7 +69,8 @@ class _NewDrinkState extends State<NewDrink> {
                         return options.map((String value) {
                           return Text(
                             dropdownValue,
-                            style: const TextStyle(color: Colors.black),
+                            style: const TextStyle(color: Colors.black,
+                            fontSize: 30),
                           );
                         }).toList();
                         },
@@ -89,19 +87,13 @@ class _NewDrinkState extends State<NewDrink> {
             ),
 
             Container(
-              margin: EdgeInsets.symmetric(vertical: 50),
+              margin: EdgeInsets.symmetric(vertical: 20),
               child: Column(
                 children: [
-                  Text('Rating',
-                      style: TextStyle(
-                        fontFamily: 'Hind',
-                        color: Colors.black,
-                        height: 1,
-                        fontSize: 12,
-                        fontStyle: FontStyle.italic,
-                      )),
+
                 Container(
                   margin: EdgeInsets.symmetric(vertical: 10),
+                  height: 50,
                   color: Colors.blueAccent,
                   child: RatingBar.builder(
                     initialRating: 3,
@@ -119,12 +111,31 @@ class _NewDrinkState extends State<NewDrink> {
                     },
                   ),
                 ),
+                  Text('Rating')
                 ],
               ),
             ),
 
+
             Container(
-                margin: new EdgeInsets.symmetric(vertical: 60.0),
+              margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              child: TextField(
+                keyboardType: TextInputType.multiline,
+                maxLines: null,
+                controller: notes,
+                decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
+                    fillColor: Colors.white, filled: true,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                    hintText: 'Additional Notes ie. where beer is from, taste notes'
+                ),
+              ),
+            ),
+
+            Container(
+                margin: new EdgeInsets.symmetric(vertical: 10.0),
                 width:150,
                 height: 40,
                 child:ElevatedButton(
@@ -134,7 +145,8 @@ class _NewDrinkState extends State<NewDrink> {
                         {
                           "name" : beerName.text,
                           "rating" : beerRating,
-                          "type" : dropdownValue
+                          "type" : dropdownValue,
+                          "notes": notes.text
                         }
                       ).then((value) {
                         print("Beer successfully added");

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:need_for_feed/main.dart';
+import 'package:need_for_feed/beerVault.dart';
 
 class insertSuccess extends StatefulWidget {
   const insertSuccess({Key? key}) : super(key: key);
@@ -60,10 +61,13 @@ class _insertSuccessState extends State<insertSuccess> {
                 height: 40,
                 child:ElevatedButton(
                     onPressed: (){
-                      //todo
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => beerVault()),
+                      );
                     },
                     style: TextButton.styleFrom(
-                        backgroundColor: Colors.redAccent[50]
+                        backgroundColor: Colors.greenAccent
                     ),
                     child: Text(
                       'View Vault',

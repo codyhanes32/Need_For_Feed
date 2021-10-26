@@ -39,50 +39,12 @@ class _NewDrinkState extends State<NewDrink> {
                 controller: beerName,
                 decoration: InputDecoration(
 
-                    fillColor: Colors.cyanAccent, filled: true,
+                    fillColor: Colors.lightBlueAccent[100], filled: true,
                     border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
+                      borderRadius: BorderRadius.circular(10),
                     ),
                     hintText: 'Beer Name'
                 ),
-              ),
-            ),
-
-            Container(
-              height: 100,
-              margin: new EdgeInsets.only(left:10),
-              child: Column(
-                children: [
-                  Container(
-                      margin: new EdgeInsets.only(left: 10, top: 20),
-                      height: 40,
-                      width: 100,
-                      child: DropdownButton<String>(
-                      value: dropdownValue,
-                      onChanged: (String? newValue) {
-                        setState(() {
-                          dropdownValue = newValue!;
-                        });
-                        },
-                      style: const TextStyle(color: Colors.blue),
-                      selectedItemBuilder: (BuildContext context) {
-                        return options.map((String value) {
-                          return Text(
-                            dropdownValue,
-                            style: const TextStyle(color: Colors.black,
-                            fontSize: 30),
-                          );
-                        }).toList();
-                        },
-                      items: options.map<DropdownMenuItem<String>>((String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                ],
               ),
             ),
 
@@ -92,9 +54,8 @@ class _NewDrinkState extends State<NewDrink> {
                 children: [
 
                 Container(
-                  margin: EdgeInsets.symmetric(vertical: 10),
+                  margin: EdgeInsets.symmetric(vertical: 5),
                   height: 50,
-                  color: Colors.blueAccent,
                   child: RatingBar.builder(
                     initialRating: 3,
                     minRating: 1,
@@ -111,7 +72,43 @@ class _NewDrinkState extends State<NewDrink> {
                     },
                   ),
                 ),
-                  Text('Rating')
+                  Container(
+                    color: Colors.white,
+                    height: 70,
+                    margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                    padding: EdgeInsets.symmetric(horizontal: 30.0),
+                    child: Row(
+                      children: [
+                        Container(
+                          margin: new EdgeInsets.only(left: 20, top: 10),
+                          child: DropdownButton<String>(
+                            value: dropdownValue,
+                            onChanged: (String? newValue) {
+                              setState(() {
+                                dropdownValue = newValue!;
+                              });
+                            },
+                            style: const TextStyle(color: Colors.blue),
+                            selectedItemBuilder: (BuildContext context) {
+                              return options.map((String value) {
+                                return Text(
+                                  dropdownValue,
+                                  style: const TextStyle(color: Colors.black,
+                                      fontSize: 30),
+                                );
+                              }).toList();
+                            },
+                            items: options.map<DropdownMenuItem<String>>((String value) {
+                              return DropdownMenuItem<String>(
+                                value: value,
+                                child: Text(value),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -121,10 +118,10 @@ class _NewDrinkState extends State<NewDrink> {
               margin: EdgeInsets.symmetric(vertical: 30, horizontal: 20),
               child: TextField(
                 keyboardType: TextInputType.multiline,
-                maxLines: null,
+                minLines: 1,//Normal textInputField will be displayed
+                maxLines: 5,
                 controller: notes,
                 decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.symmetric(vertical: 20.0),
                     fillColor: Colors.white, filled: true,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(10),
@@ -135,7 +132,7 @@ class _NewDrinkState extends State<NewDrink> {
             ),
 
             Container(
-                margin: new EdgeInsets.symmetric(vertical: 10.0),
+                margin: new EdgeInsets.symmetric(vertical: 50.0),
                 width:150,
                 height: 40,
                 child:ElevatedButton(

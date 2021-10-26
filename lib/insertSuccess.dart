@@ -17,7 +17,7 @@ class _insertSuccessState extends State<insertSuccess> {
         backgroundColor: Colors.cyanAccent[100],
 
         appBar: AppBar(
-
+          backgroundColor: Colors.blue,
           title: Text(''),
 
         ),

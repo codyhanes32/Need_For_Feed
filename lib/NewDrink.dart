@@ -23,8 +23,8 @@ class _NewDrinkState extends State<NewDrink> {
       backgroundColor: Colors.cyanAccent[100],
       resizeToAvoidBottomInset : false,
       appBar: AppBar(
-
-        title: Text(''),
+        centerTitle: true,
+        title: Text('Add New Drink'),
         backgroundColor: Colors.blue,
 
       ),

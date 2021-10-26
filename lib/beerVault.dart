@@ -20,8 +20,9 @@ class _beerVaultState extends State<beerVault> {
           var tempList = [];
           data.value.forEach((k,v){
             tempList.add(v);
-            print(v);
           });
+          tempList.sort((a, b) => a['type'].compareTo(b['type']));
+          print(tempList);
           beerList = tempList;
           setState(() {
 

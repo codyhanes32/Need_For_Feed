@@ -1,5 +1,7 @@
 
 import 'package:flutter/material.dart';
+import 'package:need_for_feed/beerVault.dart';
+import 'package:firebase_database/firebase_database.dart';
 
 class beerNotes extends StatefulWidget {
 
@@ -39,6 +41,32 @@ class _beerNotesState extends State<beerNotes> {
                     child: Text("Notes: " + "${widget.beerDetails['notes']}",
                       style: TextStyle(fontSize: 20),)
                 ),
+                Container(
+                  margin: EdgeInsets.only(top: 100, left: 30),
+                  width:150,
+                  height: 40,
+                  child:ElevatedButton(
+                      onPressed: (){
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => beerVault()),
+                        );
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Colors.cyanAccent,
+
+                      ),
+                      child: Text(
+                        '<-- Go Back',
+                        style:
+                        TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                        ),
+                      )
+                  ),
+                ),
+
         ],
       ) ,
       ),

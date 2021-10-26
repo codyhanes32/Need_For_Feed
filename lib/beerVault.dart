@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
 import 'package:need_for_feed/beerNotes.dart';
+import 'package:need_for_feed/main.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 
 class beerVault extends StatefulWidget {
@@ -69,6 +70,16 @@ class _beerVaultState extends State<beerVault> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.cyanAccent[100],
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => MyApp()),
+          );
+        },
+        child: const Icon(Icons.home),
+        backgroundColor: Colors.blue,
+      ),
       appBar: AppBar(
         centerTitle: true,
         title: Text('Beer Vault'),

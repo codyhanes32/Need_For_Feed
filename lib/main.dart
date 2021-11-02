@@ -114,11 +114,9 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Container(
               margin: EdgeInsets.all(30),
-              child:Image(
-                  image: NetworkImage('https://www.pngkey.com/png/full/982-9824565_american-pale-ale-transparent-background-beer-glass-png.png'),
-                  height: 350,
-                  width: 250
-              ),
+              child:Image.asset('img.png',
+              width: 200,
+              height: 400),
             ),
 
             Container(
